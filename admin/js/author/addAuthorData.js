@@ -1,4 +1,4 @@
-import { isNotFirstItemSelected } from "../selectEvents.js";
+﻿import { isNotFirstItemSelected } from "../selectEvents.js";
 import { toast } from "../../../public/js/toast.js";
 import { showNotification } from "../dialogMessage.js";
 import { renderAuthorTable } from "./renderAuthorTable.js";
@@ -117,7 +117,7 @@ export function addAuthorData() {
           );
           if (yes) {
             try {
-              const response = await fetch("api/authors/create.php", {
+              const response = await fetch("../api/authors/create.php", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/x-www-form-urlencoded",

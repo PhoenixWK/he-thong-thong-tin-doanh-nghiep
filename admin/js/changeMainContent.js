@@ -1,4 +1,4 @@
-import { selectFormEvents, updateTimelineSelects } from "./selectEvents.js";
+﻿import { selectFormEvents, updateTimelineSelects } from "./selectEvents.js";
 import { printProfitDashboardTicket } from "./dashboard/printProfitDashboard.js";
 import { updateProfitDashboardTable } from "./dashboard/updateProfitDashboardTable.js";
 import { updateRevenueDashboardTable } from "./dashboard/updateRevenueDashboardTable.js";
@@ -326,7 +326,7 @@ var filterPaymentCSS = data[16] && data[16].includes(1) ? "" : "none__item";
 
 async function getRolePrivilege() {
   try {
-    const response = await fetch("api/roles/list.php");
+    const response = await fetch("../api/roles/list.php");
     const data = await response.json(); // nếu server trả JSON
     return data;
   } catch (error) {
@@ -1356,7 +1356,7 @@ if (firstKey == 1) {
 
 // // dùng để hiển thị vào input để chọn để tìm kiếm
 // async function showCategory() {
-//   let listCategory = await fetchData(`api/categories/get.php`); // Chờ dữ liệu từ API
+//   let listCategory = await fetchData(`../api/categories/get.php`); // Chờ dữ liệu từ API
 //   console.log("Dữ liệu nhận được từ API:", listCategory);
 
 //   if (!Array.isArray(listCategory)) {

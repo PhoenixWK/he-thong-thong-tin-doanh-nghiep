@@ -1,11 +1,11 @@
-import { fetchData } from "../../../public/js/book/getDataBook.js";
+﻿import { fetchData } from "../../../public/js/book/getDataBook.js";
 import { printTicket } from "../printTicket.js";
 import { vietnamMoneyFormat } from "../others.js";
 import { numberToVietnamWords } from "../others.js";
 
 async function renderInputDetailTable(inputTicketIdSelected) {
   const inputTicketDetails = await fetchData(
-    `api/input_ticket_details/list.php?inputTicketId=${inputTicketIdSelected}`
+    `../api/input_ticket_details/list.php?inputTicketId=${inputTicketIdSelected}`
   );
 
   // Biến chứa đối tượng bảng Chi tiết đơn hàng
@@ -38,7 +38,7 @@ async function renderInputDetailTable(inputTicketIdSelected) {
 export async function printInputTicket(idInputTicketSelected) {
   //
   const inputTicket = await fetchData(
-    `api/input_tickets/list.php?id=${idInputTicketSelected}`
+    `../api/input_tickets/list.php?id=${idInputTicketSelected}`
   );
 
   // Lấy ra ngày hiện tại

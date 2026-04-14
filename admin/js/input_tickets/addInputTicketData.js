@@ -1,4 +1,4 @@
-import { fetchData } from "../../../public/js/book/getDataBook.js";
+﻿import { fetchData } from "../../../public/js/book/getDataBook.js";
 import { toast } from "../../../public/js/toast.js";
 import { showNotification } from "../dialogMessage.js";
 import { isNotFirstItemSelected } from "../selectEvents.js";
@@ -111,7 +111,7 @@ export function addInputTicketData() {
     if (supplierSelect) {
       supplierSelect.innerHTML = `<option value="">Chọn Nhà cung cấp</option>`;
       let suppliers = await fetchData(
-        `api/suppliers/list.php?status=Hoạt%20động`
+        `../api/suppliers/list.php?status=Hoạt%20động`
       );
       suppliers.data.forEach((supplier) => {
         supplierSelect.innerHTML += `<option value="${supplier.id}">#${
@@ -189,7 +189,7 @@ export function addInputTicketData() {
           );
           if (yes) {
             try {
-              const response = await fetch("api/input_tickets/create.php", {
+              const response = await fetch("../api/input_tickets/create.php", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/x-www-form-urlencoded",
@@ -233,7 +233,7 @@ export function addInputTicketData() {
               data.forEach(async (item) => {
                 try {
                   const response = await fetch(
-                    "api/input_ticket_details/create.php",
+                    "../api/input_ticket_details/create.php",
                     {
                       method: "POST",
                       headers: {

@@ -1,4 +1,4 @@
-import { isNotFirstItemSelected } from "../selectEvents.js";
+﻿import { isNotFirstItemSelected } from "../selectEvents.js";
 import { fetchData } from "../../../public/js/book/getDataBook.js";
 import { toast } from "../../../public/js/toast.js";
 import { showNotification } from "../dialogMessage.js";
@@ -13,15 +13,15 @@ import {
 // Hàm thiết lập sự kiện Sửa một sách cho bảng
 export async function updateBookData(idBookSelected) {
   // Phải truy vấn từ CSDL thông qua idBookSelected để lấy được dữ liệu của đối tượng hiện tại
-    const res = await fetchData(`api/books/detail.php?id=${idBookSelected}`);
+    const res = await fetchData(`../api/books/detail.php?id=${idBookSelected}`);
       const book = res.data;
-      const resultAuthor = await fetchData(`api/authors/detail.php?id=${book.authorId}`);
+      const resultAuthor = await fetchData(`../api/authors/detail.php?id=${book.authorId}`);
       const author = resultAuthor.data;
-      const resultCategory = await fetchData(`api/categories/detail.php?id=${book.categoryId}`);
+      const resultCategory = await fetchData(`../api/categories/detail.php?id=${book.categoryId}`);
       const category = resultCategory.data;
-      const resultCorver = await fetchData(`api/covers/detail.php?id=${book.coverId}`);
+      const resultCorver = await fetchData(`../api/covers/detail.php?id=${book.coverId}`);
       const corver = resultCorver.data;
-      const resultPublisher = await fetchData(`api/publishers/detail.php?id=${book.publisherId}`);
+      const resultPublisher = await fetchData(`../api/publishers/detail.php?id=${book.publisherId}`);
       const publisher = resultPublisher.data;
 
   
@@ -201,7 +201,7 @@ document.getElementById("update-book-image").addEventListener("change", function
 
 
  // THÊM option các  tác giả
- let authorList = await fetchData(`api/authors/list.php`);
+ let authorList = await fetchData(`../api/authors/list.php`);
  authorList = authorList.data.filter(tacGia => tacGia.id !== author.id);
  let authorSelect = document.querySelector("#update-book-author");
  authorList.forEach(author => {
@@ -212,7 +212,7 @@ document.getElementById("update-book-image").addEventListener("change", function
  });
 
   // THÊM option các  thể loại
-  let categoryList =await fetchData(`api/categories/list.php`);
+  let categoryList =await fetchData(`../api/categories/list.php`);
     categoryList = categoryList.data.filter(theLoai => theLoai.id !== category.id);
   let categorySelect = document.querySelector("#update-book-type");
   categoryList.forEach(category => {
@@ -224,7 +224,7 @@ document.getElementById("update-book-image").addEventListener("change", function
 
 
    // THÊM option các  thể loại
-   let coverList = await fetchData(`api/covers/list.php`);
+   let coverList = await fetchData(`../api/covers/list.php`);
    coverList = coverList.data.filter(loaiBia => loaiBia.id !== corver.id);
    let coverSelect = document.querySelector("#update-book-cover");
    coverList.forEach(author => {
@@ -235,7 +235,7 @@ document.getElementById("update-book-image").addEventListener("change", function
    });
 
     // THÊM option các  thể loại
-      let publisherList = await fetchData(`api/publishers/list.php`);
+      let publisherList = await fetchData(`../api/publishers/list.php`);
         publisherList = publisherList.data.filter(nxb => nxb.id !== publisher.id);
 
       let publisherLelect = document.querySelector("#update-book-publish-name");
@@ -356,7 +356,7 @@ document.getElementById("update-book-button").addEventListener("click", async (e
         
            
             try {
-                const response = await fetch("api/books/update.php", {
+                const response = await fetch("../api/books/update.php", {
                     method: "POST",
                     body: formData,
                 });

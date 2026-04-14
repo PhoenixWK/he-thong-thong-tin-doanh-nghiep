@@ -1,4 +1,4 @@
-import { fetchData } from "../../../public/js/book/getDataBook.js";
+﻿import { fetchData } from "../../../public/js/book/getDataBook.js";
 import { toast } from "../../../public/js/toast.js";
 import { showNotification } from "../dialogMessage.js";
 import { renderSupplierTable } from "./renderSupplierTable.js";
@@ -6,7 +6,7 @@ import { renderSupplierTable } from "./renderSupplierTable.js";
 //
 export async function lockSupplierData(idSupplierSelected) {
   // Gọi api để lấy được thông tin nhà cung cấp được nhấn
-  let supplier = await fetchData(`api/suppliers/detail.php?id=${idSupplierSelected}`);
+  let supplier = await fetchData(`../api/suppliers/detail.php?id=${idSupplierSelected}`);
 
   // // Biến chứa đối tượng là nút "Khoá"
   // const lockButton = document.getElementById("lock-button-supplier");
@@ -70,7 +70,7 @@ export async function lockSupplierData(idSupplierSelected) {
       const status = document.getElementById("lock-supplier-status").value;
 
       try {
-        const response = await fetch("api/suppliers/lock.php", {
+        const response = await fetch("../api/suppliers/lock.php", {
           method: "POST",
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",

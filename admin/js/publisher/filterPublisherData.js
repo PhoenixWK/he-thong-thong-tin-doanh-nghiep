@@ -1,4 +1,4 @@
-import { renderPublisherTable } from "./renderPublisherTable.js";
+﻿import { renderPublisherTable } from "./renderPublisherTable.js";
 import { renderPagination } from "../pagination.js";
 
 // Tiến hành lọc
@@ -39,7 +39,7 @@ export async function filterPublisher(currentPage) {
   params.append("offset", offset);
 
   try {
-    let response = await fetch(`api/publishers/list.php?${params.toString()}`);
+    let response = await fetch(`../api/publishers/list.php?${params.toString()}`);
 
     if (!response.ok) {
       throw new Error("Lỗi khi lấy dữ liệu! HTTP Status: " + response.status);

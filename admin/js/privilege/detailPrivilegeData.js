@@ -1,11 +1,11 @@
-import { isNotFirstItemSelected } from "../selectEvents.js";
+﻿import { isNotFirstItemSelected } from "../selectEvents.js";
 
 // Hàm thiết lập sự kiện Sửa một nhóm quyền cho bảng
 export async function detailPrivilegeData(idPrivilegeSelected) {
   // Phải truy vấn từ CSDL thông qua idPrivilegeSelected để lấy được dữ liệu của đối tượng hiện tại
   // ...
   const idPrivilege = parseInt(idPrivilegeSelected.innerText);
-  const response = await fetch('api/action/getDetailList.php', {
+  const response = await fetch('../api/action/getDetailList.php', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'

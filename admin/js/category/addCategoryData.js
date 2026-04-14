@@ -1,4 +1,4 @@
-import { isNotFirstItemSelected } from "../selectEvents.js";
+﻿import { isNotFirstItemSelected } from "../selectEvents.js";
 import { toast } from "../../../public/js/toast.js";
 import { showNotification } from "../dialogMessage.js";
 import { renderCategoryTable } from "./renderCategoryTable.js";
@@ -116,7 +116,7 @@ export function addCategoryData() {
           );
           if (yes) {
             try {
-              const response = await fetch("api/categories/create.php", {
+              const response = await fetch("../api/categories/create.php", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/x-www-form-urlencoded",

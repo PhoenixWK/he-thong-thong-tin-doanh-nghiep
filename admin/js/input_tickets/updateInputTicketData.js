@@ -1,4 +1,4 @@
-import { fetchData } from "../../../public/js/book/getDataBook.js";
+﻿import { fetchData } from "../../../public/js/book/getDataBook.js";
 import { toast } from "../../../public/js/toast.js";
 import { showNotification } from "../dialogMessage.js";
 import { vietnamMoneyFormat } from "../others.js";
@@ -16,10 +16,10 @@ let data = [],
 export async function updateInputTicketData(idInputTicketSelected) {
   //
   const inputTicket = await fetchData(
-    `api/input_tickets/list.php?id=${idInputTicketSelected}`
+    `../api/input_tickets/list.php?id=${idInputTicketSelected}`
   );
   const inputTicketDetails = await fetchData(
-    `api/input_ticket_details/list.php?inputTicketId=${idInputTicketSelected}`
+    `../api/input_ticket_details/list.php?inputTicketId=${idInputTicketSelected}`
   );
   data = inputTicketDetails.data;
   status = inputTicket.data[0].status;
@@ -134,7 +134,7 @@ export async function updateInputTicketData(idInputTicketSelected) {
   if (inputTicket.data[0].status === "Đang chờ xác nhận") {
     if (supplierSelect) {
       supplierSelect.innerHTML = `<option value="">Chọn Nhà cung cấp</option>`;
-      let suppliers = await fetchData(`api/suppliers/list.php`);
+      let suppliers = await fetchData(`../api/suppliers/list.php`);
       suppliers.data.forEach((supplier) => {
         if (inputTicket.data[0].supplierId === supplier.id) {
           supplierSelect.innerHTML += `<option value="${
@@ -198,7 +198,7 @@ export async function updateInputTicketData(idInputTicketSelected) {
     if (status !== "Đã thanh toán") {
       // - Xoá tất cả chi tiết phiếu hiện có
       try {
-        await fetch("api/input_ticket_details/delete.php", {
+        await fetch("../api/input_ticket_details/delete.php", {
           method: "POST",
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -221,7 +221,7 @@ export async function updateInputTicketData(idInputTicketSelected) {
         await Promise.all(
           data.map(async (item) => {
             const response = await fetch(
-              "api/input_ticket_details/create.php",
+              "../api/input_ticket_details/create.php",
               {
                 method: "POST",
                 headers: {
@@ -256,7 +256,7 @@ export async function updateInputTicketData(idInputTicketSelected) {
     }
     // - Cập nhật phiếu nhập
     try {
-      const response = await fetch("api/input_tickets/update.php", {
+      const response = await fetch("../api/input_tickets/update.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",

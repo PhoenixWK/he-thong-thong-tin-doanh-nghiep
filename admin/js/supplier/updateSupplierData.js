@@ -1,4 +1,4 @@
-import { isNotFirstItemSelected } from "../selectEvents.js";
+﻿import { isNotFirstItemSelected } from "../selectEvents.js";
 import { fetchData } from "../../../public/js/book/getDataBook.js";
 import { toast } from "../../../public/js/toast.js";
 import { showNotification } from "../dialogMessage.js";
@@ -9,7 +9,7 @@ import { showAddressSelectDialog } from "../updateAddressSelect.js";
 export async function updateSupplierData(idSupplierSelected) {
   // Gọi api để lấy được thông tin nhà cung cấp được nhấn
   let supplier = await fetchData(
-    `api/suppliers/detail.php?id=${idSupplierSelected}`
+    `../api/suppliers/detail.php?id=${idSupplierSelected}`
   );
 
   // // Biến chứa đối tượng là nút "Sửa"
@@ -188,7 +188,7 @@ export async function updateSupplierData(idSupplierSelected) {
         if (yes) {
           // Nếu mọi thứ hợp lệ, tiếp tục gửi request
           try {
-            const response = await fetch("api/suppliers/update.php", {
+            const response = await fetch("../api/suppliers/update.php", {
               method: "POST",
               headers: {
                 "Content-Type": "application/x-www-form-urlencoded",

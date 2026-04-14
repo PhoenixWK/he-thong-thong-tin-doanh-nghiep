@@ -1,4 +1,4 @@
-import { renderOrderDashboardTable } from "./renderOrderDashboardTable.js";
+﻿import { renderOrderDashboardTable } from "./renderOrderDashboardTable.js";
 import { renderPagination } from "../pagination.js";
 
 // Tiến hành lọc
@@ -64,7 +64,7 @@ export async function filterOrderDashboard(currentPage) {
   console.log(orderParams.toString())
   try {
 
-    const responseOrder = await fetch(`api/orders/listOrder.php?${orderParams.toString()}`, {
+    const responseOrder = await fetch(`../api/orders/listOrder.php?${orderParams.toString()}`, {
     });
 
     const dataResOrder = await responseOrder.json();

@@ -1,4 +1,4 @@
-import {
+﻿import {
   vietnamMoneyFormat,
   numberToVietnamWords,
   formatDate2,
@@ -112,9 +112,9 @@ export async function renderRevenueDashboardTable(
   );
 
   // Dữ liệu về tất cả đơn hàng hiện có
-  const orders = await fetchData(`api/orders/listBase.php?`);
+  const orders = await fetchData(`../api/orders/listBase.php?`);
   // Dữ liệu về tất cả chi tiết đơn hàng hiện có
-  const orderDetails = await fetchData(`api/order_details/list.php`);
+  const orderDetails = await fetchData(`../api/order_details/list.php`);
   // Tuỳ theo lựa chọn mà có dữ liệu thời gian để thống kê
   const timeline =
     month !== 0 ? getWeeksInMonth(year, month) : getMonthsInYear(year);

@@ -1,4 +1,4 @@
-import { renderCoverTable } from "./renderCoverTable.js";
+﻿import { renderCoverTable } from "./renderCoverTable.js";
 import { renderPagination } from "../pagination.js";
 
 //  lọc
@@ -37,7 +37,7 @@ export async function filterCover(currentPage) {
   params.append("offset", offset);
 
   try {
-    let response = await fetch(`api/covers/list.php?${params.toString()}`);
+    let response = await fetch(`../api/covers/list.php?${params.toString()}`);
 
     if (!response.ok) {
       throw new Error("Lỗi khi lấy dữ liệu! HTTP Status: " + response.status);

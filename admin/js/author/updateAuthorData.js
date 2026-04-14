@@ -1,4 +1,4 @@
-import { isNotFirstItemSelected } from "../selectEvents.js";
+﻿import { isNotFirstItemSelected } from "../selectEvents.js";
 import { fetchData } from "../../../public/js/book/getDataBook.js";
 import { toast } from "../../../public/js/toast.js";
 import { showNotification } from "../dialogMessage.js";
@@ -7,7 +7,7 @@ import { renderAuthorTable } from "./renderAuthorTable.js";
 // Hàm thiết lập sự kiện Sửa một tác giả cho bảng
 export async function updateAuthorData(idAuthorSelected) {
   // Gọi api để lấy được thông tin tác giả được nhấn
-  let author = await fetchData(`api/authors/detail.php?id=${idAuthorSelected}`);
+  let author = await fetchData(`../api/authors/detail.php?id=${idAuthorSelected}`);
 
   // // Biến chứa đối tượng là nút "Sửa"
   // const updateButton = document.getElementById("update-button-author");
@@ -95,7 +95,7 @@ export async function updateAuthorData(idAuthorSelected) {
         let yes = await showNotification("Bạn có đồng ý lưu chỉnh sửa không.");
         if (yes) {
           try {
-            const response = await fetch("api/authors/update.php", {
+            const response = await fetch("../api/authors/update.php", {
               method: "POST",
               headers: {
                 "Content-Type": "application/x-www-form-urlencoded",

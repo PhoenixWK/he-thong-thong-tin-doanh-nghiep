@@ -1,11 +1,11 @@
-import { isNotFirstItemSelected } from "../selectEvents.js";
+﻿import { isNotFirstItemSelected } from "../selectEvents.js";
 import { toast } from "../../../public/js/toast.js";
 import { showNotification } from "../dialogMessage.js";
 import { renderAccountTable } from "./renderAccountTable.js";
 // import { getRolePrivilege } from "./changeMainContent.js";
 async function getRolePrivilege() {
   try {
-    const response = await fetch("api/roles/list.php");
+    const response = await fetch("../api/roles/list.php");
     const data = await response.json(); // nếu server trả JSON
     return data;
   } catch (error) {
@@ -80,10 +80,10 @@ export function updateAccountData(idAccountSelected) {
 
   // Gọi API
   Promise.all([
-    fetch(`api/address/get_address.php?maNguoiDung=${id}`).then((res) =>
+    fetch(`../api/address/get_address.php?maNguoiDung=${id}`).then((res) =>
       res.json()
     ),
-    fetch(`api/account/detail_account.php?id=${id}`).then((res) => res.json()),
+    fetch(`../api/account/detail_account.php?id=${id}`).then((res) => res.json()),
   ])
     .then(([addressData, userData]) => {
       if (userData.status !== "success") return;
@@ -299,7 +299,7 @@ export function updateAccountData(idAccountSelected) {
 
           // Gọi API cập nhật
           try {
-            const response = await fetch("api/account/update_account.php", {
+            const response = await fetch("../api/account/update_account.php", {
               method: "POST",
               headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
@@ -321,7 +321,7 @@ export function updateAccountData(idAccountSelected) {
               addressData.append("cityAddress", district);
               addressData.append("wardAddress", ward);
 
-              const addressRes = await fetch("api/address/updateAddress.php", {
+              const addressRes = await fetch("../api/address/updateAddress.php", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/x-www-form-urlencoded",

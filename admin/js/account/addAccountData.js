@@ -1,4 +1,4 @@
-import { isNotFirstItemSelected } from "../selectEvents.js";
+﻿import { isNotFirstItemSelected } from "../selectEvents.js";
 import { updateAddressSelect } from "../../../api/address/updateAddressSelect.js";
 import { renderAccountTable } from "./renderAccountTable.js";
 import { toast } from "../../../public/js/toast.js";
@@ -6,7 +6,7 @@ import { showNotification } from "../dialogMessage.js";
 // import { getRolePrivilege } from "../changeMainContent.js";
 async function getRolePrivilege() {
   try {
-    const response = await fetch("api/roles/list.php");
+    const response = await fetch("../api/roles/list.php");
     const data = await response.json(); // nếu server trả JSON
     return data;
   } catch (error) {
@@ -347,7 +347,7 @@ export async function addAccountData() {
 
         try {
           // Gửi form tạo người dùng
-          const response = await fetch("api/account/add_account.php", {
+          const response = await fetch("../api/account/add_account.php", {
             method: "POST",
             headers: {
               "Content-Type": "application/x-www-form-urlencoded",
@@ -369,7 +369,7 @@ export async function addAccountData() {
             addressData.append("city", district.trim());
             addressData.append("ward", ward.trim());
 
-            const addressRes = await fetch("api/address/insertAddress.php", {
+            const addressRes = await fetch("../api/address/insertAddress.php", {
               method: "POST",
               headers: {
                 "Content-Type": "application/x-www-form-urlencoded",

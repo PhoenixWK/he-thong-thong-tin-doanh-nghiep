@@ -1,4 +1,4 @@
-import { renderCategoryTable } from "./renderCategoryTable.js";
+﻿import { renderCategoryTable } from "./renderCategoryTable.js";
 import { renderPagination } from "../pagination.js";
 
 // Tiến hành lọc
@@ -37,7 +37,7 @@ export async function filterCategory(currentPage) {
   params.append("offset", offset);
 
   try {
-    let response = await fetch(`api/categories/list.php?${params.toString()}`);
+    let response = await fetch(`../api/categories/list.php?${params.toString()}`);
 
     if (!response.ok) {
       throw new Error("Lỗi khi lấy dữ liệu! HTTP Status: " + response.status);

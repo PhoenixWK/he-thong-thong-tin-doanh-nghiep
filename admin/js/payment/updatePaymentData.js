@@ -1,4 +1,4 @@
-import { isNotFirstItemSelected } from "../selectEvents.js";
+﻿import { isNotFirstItemSelected } from "../selectEvents.js";
 import { fetchData } from "../../../public/js/book/getDataBook.js";
 import { toast } from "../../../public/js/toast.js";
 import { showNotification } from "../dialogMessage.js";
@@ -7,7 +7,7 @@ import { renderPaymentTable } from "./renderPaymentTable.js";
 export async function updatePaymentData(idPaymentSelected) {
     // Này dùng để gọi hàm cập nhật diaLog hỗ trợ cập nhật thông tin
     let payment = await fetchData(
-        `api/payments/detail.php?id=${idPaymentSelected}`
+        `../api/payments/detail.php?id=${idPaymentSelected}`
     );
 
     const updateDialog = document.createElement("dialog");
@@ -218,7 +218,7 @@ export async function updatePaymentData(idPaymentSelected) {
             formData.append('note', note);
 
 
-            const paymentRef = await fetch('api/payments/update.php', {
+            const paymentRef = await fetch('../api/payments/update.php', {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded",

@@ -1,4 +1,4 @@
-import { isNotFirstItemSelected } from "../selectEvents.js";
+﻿import { isNotFirstItemSelected } from "../selectEvents.js";
 import { fetchData } from "../../../public/js/book/getDataBook.js";
 import { toast } from "../../../public/js/toast.js";
 import { showNotification } from "../dialogMessage.js";
@@ -197,7 +197,7 @@ export async function addBookData() {
       });
 
     // THÊM option các tác giả
-    let authorList = await fetchData(`api/authors/list.php?status=Hoạt%20động`);
+    let authorList = await fetchData(`../api/authors/list.php?status=Hoạt%20động`);
     let authorSelect = document.querySelector("#add-book-author");
     authorList.data.forEach((author) => {
       let op = document.createElement("option");
@@ -208,7 +208,7 @@ export async function addBookData() {
 
     // THÊM option các  thể loại
     let categoryList = await fetchData(
-      `api/categories/list.php?status=Hoạt%20động`
+      `../api/categories/list.php?status=Hoạt%20động`
     );
     let categorySelect = document.querySelector("#add-book-category");
     categoryList.data.forEach((author) => {
@@ -219,7 +219,7 @@ export async function addBookData() {
     });
 
     // THÊM option các  thể loại
-    let coverList = await fetchData(`api/covers/list.php?status=Hoạt%20động`);
+    let coverList = await fetchData(`../api/covers/list.php?status=Hoạt%20động`);
     let coverSelect = document.querySelector("#add-book-cover");
     coverList.data.forEach((author) => {
       let op = document.createElement("option");
@@ -230,7 +230,7 @@ export async function addBookData() {
 
     // THÊM option các  thể loại
     let publisherList = await fetchData(
-      `api/publishers/list.php?status=Hoạt%20động`
+      `../api/publishers/list.php?status=Hoạt%20động`
     );
     let publisherLelect = document.querySelector("#add-book-publisher-name");
     publisherList.data.forEach((author) => {
@@ -488,7 +488,7 @@ export async function addBookData() {
           formData.append("status", status);
 
           try {
-            const response = await fetch("api/books/create.php", {
+            const response = await fetch("../api/books/create.php", {
               method: "POST",
               body: formData,
             });

@@ -1,4 +1,4 @@
-import { fetchData } from "../../../public/js/book/getDataBook.js";
+﻿import { fetchData } from "../../../public/js/book/getDataBook.js";
 import { toast } from "../../../public/js/toast.js";
 import { showNotification } from "../dialogMessage.js";
 import { renderDiscountTable } from "./renderDiscountTable.js";
@@ -7,7 +7,7 @@ import { renderDiscountTable } from "./renderDiscountTable.js";
 export async function lockDiscountData(idDiscountSelected) {
   // Gọi api để lấy được thông tin phiếu giảm giá được nhấn
   let discount = await fetchData(
-    `api/discounts/detail.php?id=${idDiscountSelected}`
+    `../api/discounts/detail.php?id=${idDiscountSelected}`
   );
 
   // // Biến chứa đối tượng là nút "Khoá"
@@ -74,7 +74,7 @@ export async function lockDiscountData(idDiscountSelected) {
       const status = document.getElementById("lock-discount-status").value;
 
       try {
-        const response = await fetch("api/discounts/lock.php", {
+        const response = await fetch("../api/discounts/lock.php", {
           method: "POST",
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",

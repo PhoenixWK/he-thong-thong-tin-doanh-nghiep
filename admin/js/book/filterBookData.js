@@ -1,4 +1,4 @@
-import { renderBookTable } from "./renderBookTable.js";
+﻿import { renderBookTable } from "./renderBookTable.js";
 import { renderPagination } from "../pagination.js";
 
 // Tiến hành lọc
@@ -58,7 +58,7 @@ export async function filterBook(currentPage) {
   params.append("offset", offset);
 
   try {
-    let response = await fetch(`api/books/list.php?${params.toString()}`);
+    let response = await fetch(`../api/books/list.php?${params.toString()}`);
 
     if (!response.ok) {
       throw new Error("Lỗi khi lấy dữ liệu! HTTP Status: " + response.status);

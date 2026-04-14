@@ -1,11 +1,11 @@
-import { isNotFirstItemSelected } from "../selectEvents.js";
+﻿import { isNotFirstItemSelected } from "../selectEvents.js";
 import { fetchData } from "../../../public/js/book/getDataBook.js";
 
 // Hàm thiết lập sự kiện Sửa một nhà cung cấp cho bảng
 export async function detailSupplierData(idSupplierSelected) {
   // Gọi api để lấy được thông tin nhà cung cấp được nhấn
   const supplier = await fetchData(
-    `api/suppliers/detail.php?id=${idSupplierSelected}`
+    `../api/suppliers/detail.php?id=${idSupplierSelected}`
   );
 
   //   // Biến chứa đối tượng là nút "Chi tiết"

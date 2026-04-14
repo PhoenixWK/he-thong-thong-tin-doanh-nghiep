@@ -1,4 +1,4 @@
-import { isNotFirstItemSelected } from "../selectEvents.js";
+﻿import { isNotFirstItemSelected } from "../selectEvents.js";
 import { fetchData } from "../../../public/js/book/getDataBook.js";
 import { toast } from "../../../public/js/toast.js";
 import { showNotification } from "../dialogMessage.js";
@@ -7,7 +7,7 @@ import { renderCoverTable } from "./renderCoverTable.js";
 // Hàm thiết lập sự kiện Sửa một loại bìa cho bảng
 export async function updateCoverData(idCoverSelected) {
   // Gọi api để lấy được thông tin loại bìa được nhấn
-  let cover = await fetchData(`api/covers/detail.php?id=${idCoverSelected}`);
+  let cover = await fetchData(`../api/covers/detail.php?id=${idCoverSelected}`);
 
   // // Biến chứa đối tượng là nút "Sửa"
   // const updateButton = document.getElementById("update-button-cover");
@@ -95,7 +95,7 @@ export async function updateCoverData(idCoverSelected) {
         let yes = await showNotification("Bạn có đồng ý lưu chỉnh sửa không.");
         if (yes) {
           try {
-            const response = await fetch("api/covers/update.php", {
+            const response = await fetch("../api/covers/update.php", {
               method: "POST",
               headers: {
                 "Content-Type": "application/x-www-form-urlencoded",

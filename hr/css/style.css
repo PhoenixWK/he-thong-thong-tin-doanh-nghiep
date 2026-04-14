@@ -1,0 +1,145 @@
+/* HR Employee Portal - Standalone CSS */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary: #1a3c6e;
+  --primary-light: #2d5a9e;
+  --accent: #27ae60;
+  --danger: #e74c3c;
+  --warning: #f39c12;
+  --bg: #f0f2f5;
+  --card: #ffffff;
+  --text: #2c3e50;
+  --muted: #7f8c8d;
+  --border: #dde1e7;
+  --radius: 10px;
+  --shadow: 0 2px 15px rgba(0,0,0,.08);
+}
+
+body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+/* ---- Login Page ---- */
+.login-wrapper {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 100vh; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+}
+.login-card {
+  background: var(--card); border-radius: var(--radius); padding: 40px 36px;
+  width: 100%; max-width: 380px; box-shadow: 0 10px 40px rgba(0,0,0,.25);
+}
+.login-card h1 { font-size: 1.5rem; color: var(--primary); margin-bottom: 4px; }
+.login-card p.subtitle { color: var(--muted); font-size: .85rem; margin-bottom: 28px; }
+.form-group { margin-bottom: 18px; }
+.form-group label { display: block; font-size: .83rem; font-weight: 600; margin-bottom: 6px; color: var(--text); }
+.form-control {
+  width: 100%; padding: 10px 14px; border: 1.5px solid var(--border);
+  border-radius: 7px; font-size: .9rem; transition: border .2s;
+}
+.form-control:focus { outline: none; border-color: var(--primary-light); }
+.btn { display: inline-flex; align-items: center; gap: 7px; padding: 10px 20px;
+  border: none; border-radius: 7px; font-size: .9rem; font-weight: 600; cursor: pointer; transition: .2s; }
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-primary:hover { background: var(--primary-light); }
+.btn-success { background: var(--accent); color: #fff; }
+.btn-success:hover { filter: brightness(1.1); }
+.btn-danger  { background: var(--danger); color: #fff; }
+.btn-warning { background: var(--warning); color: #fff; }
+.btn-outline { background: transparent; border: 1.5px solid var(--primary); color: var(--primary); }
+.btn-outline:hover { background: var(--primary); color: #fff; }
+.btn-sm { padding: 6px 14px; font-size: .82rem; }
+.btn-block { width: 100%; justify-content: center; }
+
+/* ---- Layout ---- */
+.hr-layout { display: flex; min-height: 100vh; }
+
+/* Sidebar */
+.hr-sidebar {
+  width: 240px; background: var(--primary); color: #fff;
+  display: flex; flex-direction: column; flex-shrink: 0; position: fixed; top: 0; left: 0; height: 100vh; z-index: 100;
+}
+.hr-sidebar__brand {
+  display: flex; align-items: center; gap: 10px; padding: 22px 20px;
+  font-weight: 700; font-size: 1.1rem; border-bottom: 1px solid rgba(255,255,255,.15);
+}
+.hr-sidebar__user { padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,.15); }
+.hr-sidebar__user .name { font-weight: 600; font-size: .95rem; }
+.hr-sidebar__user .role { font-size: .78rem; opacity: .7; }
+.hr-sidebar__nav { flex: 1; padding: 12px 0; }
+.hr-sidebar__nav a {
+  display: flex; align-items: center; gap: 12px; padding: 12px 20px;
+  color: rgba(255,255,255,.8); text-decoration: none; font-size: .9rem; transition: .2s;
+}
+.hr-sidebar__nav a:hover, .hr-sidebar__nav a.active { background: rgba(255,255,255,.12); color: #fff; }
+.hr-sidebar__nav a i { width: 18px; text-align: center; }
+.hr-sidebar__logout { padding: 16px 20px; border-top: 1px solid rgba(255,255,255,.15); }
+.hr-sidebar__logout button {
+  width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 10px 16px; border-radius: 8px; border: 1.5px solid rgba(255,255,255,.45);
+  background: transparent; color: rgba(255,255,255,.85); font-size: .88rem; font-weight: 600;
+  cursor: pointer; transition: .2s;
+}
+.hr-sidebar__logout button:hover {
+  background: rgba(220,50,50,.75); border-color: transparent; color: #fff;
+}
+
+/* Main */
+.hr-main { margin-left: 240px; flex: 1; padding: 28px 32px; }
+.hr-main__title { font-size: 1.6rem; font-weight: 700; color: var(--primary); margin-bottom: 24px; }
+
+/* Cards */
+.card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 24px; margin-bottom: 20px; }
+.card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+.card-header h2 { font-size: 1.1rem; color: var(--primary); }
+
+/* Table */
+.hr-table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+.hr-table th { background: var(--primary); color: #fff; padding: 11px 14px; text-align: left; font-weight: 600; }
+.hr-table td { padding: 11px 14px; border-bottom: 1px solid var(--border); }
+.hr-table tr:last-child td { border-bottom: none; }
+.hr-table tr:hover td { background: #f8f9fb; }
+
+/* Badges */
+.badge { padding: 3px 10px; border-radius: 20px; font-size: .78rem; font-weight: 600; }
+.badge-success { background: #d5f5e3; color: #1e8449; }
+.badge-warning { background: #fef9e7; color: #d68910; }
+.badge-danger  { background: #fdedec; color: #c0392b; }
+.badge-info    { background: #eaf4fd; color: #1a6fa3; }
+
+/* Forms */
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.form-row.single { grid-template-columns: 1fr; }
+.form-group select.form-control { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M6 8L0 0h12z' fill='%23999'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; }
+textarea.form-control { resize: vertical; min-height: 80px; }
+
+/* Tabs */
+.tabs { display: flex; gap: 0; border-bottom: 2px solid var(--border); margin-bottom: 24px; }
+.tab-btn { padding: 10px 22px; border: none; background: none; cursor: pointer; font-size: .9rem; color: var(--muted); font-weight: 600; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: .2s; }
+.tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
+
+/* Toast */
+.hr-toast { position: fixed; bottom: 24px; right: 24px; z-index: 999; display: flex; flex-direction: column; gap: 10px; }
+.hr-toast__item { padding: 14px 20px; border-radius: 8px; color: #fff; font-size: .88rem; font-weight: 500; box-shadow: 0 4px 15px rgba(0,0,0,.2); animation: slideIn .3s ease; }
+.hr-toast__item.success { background: var(--accent); }
+.hr-toast__item.error   { background: var(--danger); }
+@keyframes slideIn { from { transform: translateX(100px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+/* Alert */
+.alert { padding: 12px 18px; border-radius: 7px; margin-bottom: 16px; font-size: .88rem; }
+.alert-info    { background: #eaf4fd; color: #1a6fa3; border-left: 4px solid #1a6fa3; }
+.alert-success { background: #d5f5e3; color: #1e8449; border-left: 4px solid #1e8449; }
+.alert-warning { background: #fef9e7; color: #7d6608; border-left: 4px solid var(--warning); }
+
+/* Salary print section */
+@media print {
+  .hr-sidebar, .no-print { display: none !important; }
+  .hr-main { margin-left: 0; padding: 0; }
+  .card { box-shadow: none; border: 1px solid #ddd; }
+  body { background: #fff; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hr-sidebar { width: 200px; }
+  .hr-main { margin-left: 200px; padding: 16px; }
+  .form-row { grid-template-columns: 1fr; }
+}

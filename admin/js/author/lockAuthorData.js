@@ -1,4 +1,4 @@
-import { fetchData } from "../../../public/js/book/getDataBook.js";
+﻿import { fetchData } from "../../../public/js/book/getDataBook.js";
 import { toast } from "../../../public/js/toast.js";
 import { showNotification } from "../dialogMessage.js";
 import { renderAuthorTable } from "./renderAuthorTable.js";
@@ -6,7 +6,7 @@ import { renderAuthorTable } from "./renderAuthorTable.js";
 //
 export async function lockAuthorData(idAuthorSelected) {
   // Gọi api để lấy được thông tin tác giả được nhấn
-  let author = await fetchData(`api/authors/detail.php?id=${idAuthorSelected}`);
+  let author = await fetchData(`../api/authors/detail.php?id=${idAuthorSelected}`);
 
   // // Biến chứa đối tượng là nút "Khoá"
   // const lockButton = document.getElementById("lock-button-author");
@@ -63,8 +63,8 @@ export async function lockAuthorData(idAuthorSelected) {
 
 
     const id = document.getElementById("lock-author-id").value;
-    let author = await fetchData(`api/authors/detail.php?id=${id}`);
-    let bookList = await fetchData(`api/books/list.php?author=${author.data.name}`);
+    let author = await fetchData(`../api/authors/detail.php?id=${id}`);
+    let bookList = await fetchData(`../api/books/list.php?author=${author.data.name}`);
     if(bookList.data.length > 0){
        toast({
             title: "Cảnh báo",
@@ -82,7 +82,7 @@ export async function lockAuthorData(idAuthorSelected) {
         const status = document.getElementById("lock-author-status").value;
   
         try {
-          const response = await fetch("api/authors/lock.php", {
+          const response = await fetch("../api/authors/lock.php", {
             method: "POST",
             headers: {
               "Content-Type": "application/x-www-form-urlencoded",

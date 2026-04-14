@@ -1,4 +1,4 @@
-import { fetchData } from "../../../public/js/book/getDataBook.js";
+﻿import { fetchData } from "../../../public/js/book/getDataBook.js";
 import { vietnamMoneyFormat, numberToVietnamWords } from "../others.js";
 import { printTicket } from "../printTicket.js";
 import { renderOrderDetailTable } from "./renderOrderTable.js";
@@ -6,7 +6,7 @@ import { renderOrderDetailTable } from "./renderOrderTable.js";
 //
 export async function printOrderTicket(idOrderSelected) {
   // Truy vấn csdl để lấy ra đơn hàng được chọn 
-  const order = await fetchData(`api/orders/listBase.php?id=${idOrderSelected}`);
+  const order = await fetchData(`../api/orders/listBase.php?id=${idOrderSelected}`);
 
   // const printButton = document.getElementById("print-button-order");
 

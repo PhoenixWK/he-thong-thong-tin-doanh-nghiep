@@ -1,11 +1,11 @@
-import { isNotFirstItemSelected } from "../selectEvents.js";
+﻿import { isNotFirstItemSelected } from "../selectEvents.js";
 import { toast } from '../../../public/js/toast.js'
 import { showNotification } from "../dialogMessage.js";
 import { renderPrivilegeTable } from "./renderPrivilegeTable.js";
 
 // Hàm thiết lập sự kiện Thêm một nhóm quyền cho bảng
 export async function addPrivilegeData() {
-  const response = await fetch('api/action/getDetailList.php', {
+  const response = await fetch('../api/action/getDetailList.php', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
@@ -239,7 +239,7 @@ export async function addPrivilegeData() {
         formData.append('status', status.value == '1' ? 'Hoạt động' : 'Tạm dừng');
 
 
-        const response = await fetch('api/action/create.php', {
+        const response = await fetch('../api/action/create.php', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

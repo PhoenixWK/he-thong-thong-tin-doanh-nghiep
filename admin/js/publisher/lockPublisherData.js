@@ -1,4 +1,4 @@
-import { fetchData } from "../../../public/js/book/getDataBook.js";
+﻿import { fetchData } from "../../../public/js/book/getDataBook.js";
 import { toast } from "../../../public/js/toast.js";
 import { showNotification } from "../dialogMessage.js";
 import { renderPublisherTable } from "./renderPublisherTable.js";
@@ -7,7 +7,7 @@ import { renderPublisherTable } from "./renderPublisherTable.js";
 export async function lockPublisherData(idPublisherSelected) {
   // Gọi api để lấy được thông tin nhà xuất bản được nhấn
   let publisher = await fetchData(
-    `api/publishers/detail.php?id=${idPublisherSelected}`
+    `../api/publishers/detail.php?id=${idPublisherSelected}`
   );
 
   // // Biến chứa đối tượng là nút "Khoá"
@@ -66,8 +66,8 @@ export async function lockPublisherData(idPublisherSelected) {
     e.preventDefault();
 
     const id = document.getElementById("lock-publisher-id").value;
-    let publisher = await fetchData(`api/publishers/detail.php?id=${id}`);
-    let bookList = await fetchData(`api/books/list.php?publisher=${publisher.data.name}`);
+    let publisher = await fetchData(`../api/publishers/detail.php?id=${id}`);
+    let bookList = await fetchData(`../api/books/list.php?publisher=${publisher.data.name}`);
     if(bookList.data.length > 0){
        toast({
             title: "Cảnh báo",
@@ -85,7 +85,7 @@ export async function lockPublisherData(idPublisherSelected) {
         const status = document.getElementById("lock-publisher-status").value;
   
         try {
-          const response = await fetch("api/publishers/lock.php", {
+          const response = await fetch("../api/publishers/lock.php", {
             method: "POST",
             headers: {
               "Content-Type": "application/x-www-form-urlencoded",

@@ -10,6 +10,7 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
+SET FOREIGN_KEY_CHECKS=0;
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -834,7 +835,8 @@ INSERT INTO `nguoidung` (`maNguoiDung`, `hoVaTen`, `soDT`, `email`, `tenTaiKhoan
 (79, 'tes17', NULL, NULL, 'test17', '202cb962ac59075b964b07152d234b70', NULL, '2025-10-28 10:07:48', 'Hoạt động'),
 (80, 'Võ Chí Minh', NULL, NULL, 'chminh', '202cb962ac59075b964b07152d234b70', NULL, '2025-11-11 15:31:47', 'Hoạt động'),
 (81, 'Võ Chí Minh', '0912345678', 'vcm@gmail.com', 'CMinh', 'c92f1d1f2619172bf87a12e5915702a6', 2, '2025-11-18 10:56:11', 'Hoạt động'),
-(82, 'Test', NULL, NULL, 'Chi Minh', '202cb962ac59075b964b07152d234b70', NULL, '2025-11-23 01:04:31', 'Hoạt động');
+(82, 'Test', NULL, NULL, 'Chi Minh', '202cb962ac59075b964b07152d234b70', NULL, '2025-11-23 01:04:31', 'Hoạt động'),
+(83, 'HR Manager', '0900000083', 'hrmanager@bookstore.com', 'hrmanager', 'e10adc3949ba59abbe56e057f20f883e', NULL, '2026-04-14 00:00:00', 'Hoạt động');
 
 -- --------------------------------------------------------
 
@@ -1695,6 +1697,75 @@ ALTER TABLE `sach`
 --
 ALTER TABLE `vnpay`
   ADD CONSTRAINT `fk_vnpay_donhang` FOREIGN KEY (`maDonHang`) REFERENCES `donhang` (`maDonHang`) ON DELETE CASCADE;
+SET FOREIGN_KEY_CHECKS=1;
+
+-- --------------------------------------------------------
+-- HR Module Tables (Module 3.1 & 3.2)
+-- --------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS `nhanVien` (
+  `maNhanVien` int(11) NOT NULL AUTO_INCREMENT,
+  `maNguoiDung` int(11) NOT NULL,
+  `chucVu` varchar(100) NOT NULL,
+  `ngayVaoLam` date NOT NULL,
+  `luongCoBan` decimal(15,2) NOT NULL DEFAULT 5000000.00,
+  `heSoLuong` decimal(4,2) NOT NULL DEFAULT 1.00,
+  `phuCapCoDinh` decimal(15,2) NOT NULL DEFAULT 0.00,
+  `trangThai` enum('Dang lam','Da nghi') NOT NULL DEFAULT 'Dang lam',
+  PRIMARY KEY (`maNhanVien`),
+  UNIQUE KEY `maNguoiDung` (`maNguoiDung`),
+  CONSTRAINT `nhanvien_ibfk_1` FOREIGN KEY (`maNguoiDung`) REFERENCES `nguoidung` (`maNguoiDung`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `bangLuong` (
+  `maBangLuong` int(11) NOT NULL AUTO_INCREMENT,
+  `maNhanVien` int(11) NOT NULL,
+  `thang` tinyint(2) NOT NULL,
+  `nam` year(4) NOT NULL,
+  `luongCoBan` decimal(15,2) NOT NULL,
+  `heSoLuong` decimal(4,2) NOT NULL,
+  `phuCap` decimal(15,2) NOT NULL DEFAULT 0.00,
+  `thuong` decimal(15,2) NOT NULL DEFAULT 0.00,
+  `khauTru` decimal(15,2) NOT NULL DEFAULT 0.00,
+  `soNgayLam` decimal(4,1) NOT NULL DEFAULT 22.0,
+  `soNgayNghiPhep` decimal(4,1) NOT NULL DEFAULT 0.0,
+  `thucLinh` decimal(15,2) NOT NULL,
+  `ghiChu` text DEFAULT NULL,
+  PRIMARY KEY (`maBangLuong`),
+  UNIQUE KEY `uk_nhanvien_thang_nam` (`maNhanVien`,`thang`,`nam`),
+  CONSTRAINT `bangluong_ibfk_1` FOREIGN KEY (`maNhanVien`) REFERENCES `nhanVien` (`maNhanVien`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `donNghi` (
+  `maDon` int(11) NOT NULL AUTO_INCREMENT,
+  `maNhanVien` int(11) NOT NULL,
+  `loaiNghi` enum('Nghi phep','Nghi om dau','Nghi thai san','Nghi viec') NOT NULL DEFAULT 'Nghi phep',
+  `ngayBatDau` date NOT NULL,
+  `ngayKetThuc` date NOT NULL,
+  `lyDo` text DEFAULT NULL,
+  `trangThai` enum('Cho duyet','Da duyet','Tu choi') NOT NULL DEFAULT 'Cho duyet',
+  `ghiChuDuyet` text DEFAULT NULL,
+  `ngayNop` datetime NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`maDon`),
+  CONSTRAINT `donnghi_ibfk_1` FOREIGN KEY (`maNhanVien`) REFERENCES `nhanVien` (`maNhanVien`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `lichSuChucVu` (
+  `maLich` int(11) NOT NULL AUTO_INCREMENT,
+  `maNhanVien` int(11) NOT NULL,
+  `chucVuCu` varchar(100) DEFAULT NULL,
+  `chucVuMoi` varchar(100) DEFAULT NULL,
+  `luongCoBanCu` decimal(15,2) DEFAULT NULL,
+  `luongCoBanMoi` decimal(15,2) DEFAULT NULL,
+  `heSoLuongCu` decimal(4,2) DEFAULT NULL,
+  `heSoLuongMoi` decimal(4,2) DEFAULT NULL,
+  `ngayHieuLuc` date NOT NULL,
+  `ghiChu` text DEFAULT NULL,
+  `thoiGianTao` datetime NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`maLich`),
+  CONSTRAINT `lichsuchucvu_ibfk_1` FOREIGN KEY (`maNhanVien`) REFERENCES `nhanVien` (`maNhanVien`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

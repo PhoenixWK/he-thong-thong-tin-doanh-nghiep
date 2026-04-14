@@ -1,11 +1,11 @@
-import { fetchData } from "../../../public/js/book/getDataBook.js";
+﻿import { fetchData } from "../../../public/js/book/getDataBook.js";
 import { isNotFirstItemSelected } from "../selectEvents.js";
 
 // Hàm thiết lập sự kiện Xem chi tiết một khuyến mãi cho bảng
 export async function detailDiscountData(idDiscountSelected) {
   // Gọi api để lấy được thông tin nhà cung cấp được nhấn
   const discount = await fetchData(
-    `api/discounts/detail.php?id=${idDiscountSelected}`
+    `../api/discounts/detail.php?id=${idDiscountSelected}`
   );
   //   // Biến chứa đối tượng là nút "Chi tiết"
   //   const detailButton = document.getElementById("detail-button-discount");

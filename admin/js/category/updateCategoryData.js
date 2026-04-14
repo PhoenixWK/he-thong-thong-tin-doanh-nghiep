@@ -1,4 +1,4 @@
-import { isNotFirstItemSelected } from "../selectEvents.js";
+﻿import { isNotFirstItemSelected } from "../selectEvents.js";
 import { fetchData } from "../../../public/js/book/getDataBook.js";
 import { toast } from "../../../public/js/toast.js";
 import { showNotification } from "../dialogMessage.js";
@@ -8,7 +8,7 @@ import { renderCategoryTable } from "./renderCategoryTable.js";
 export async function updateCategoryData(idCategorySelected) {
   // Gọi api để lấy được thông tin thể loại được nhấn
   let category = await fetchData(
-    `api/categories/detail.php?id=${idCategorySelected}`
+    `../api/categories/detail.php?id=${idCategorySelected}`
   );
 
   // // Biến chứa đối tượng là nút "Sửa"
@@ -97,7 +97,7 @@ export async function updateCategoryData(idCategorySelected) {
         let yes = await showNotification("Bạn có đồng ý lưu chỉnh sửa không.");
         if (yes) {
           try {
-            const response = await fetch("api/categories/update.php", {
+            const response = await fetch("../api/categories/update.php", {
               method: "POST",
               headers: {
                 "Content-Type": "application/x-www-form-urlencoded",

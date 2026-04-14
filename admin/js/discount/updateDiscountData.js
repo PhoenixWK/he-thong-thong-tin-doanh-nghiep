@@ -1,4 +1,4 @@
-import { fetchData } from "../../../public/js/book/getDataBook.js";
+﻿import { fetchData } from "../../../public/js/book/getDataBook.js";
 import { isNotFirstItemSelected } from "../selectEvents.js";
 import { clickToShowDatePicker, defaultDateSelected } from "../others.js";
 import { toast } from "../../../public/js/toast.js";
@@ -8,7 +8,7 @@ import { renderDiscountTable } from "./renderDiscountTable.js";
 export async function updateDiscountData(idDiscountSelected) {
   // Gọi api để lấy được thông tin phiếu giảm giá được nhấn
   const discount = await fetchData(
-    `api/discounts/detail.php?id=${idDiscountSelected}`
+    `../api/discounts/detail.php?id=${idDiscountSelected}`
   );
 
   // // Biến chứa đối tượng là nút "Sửa"

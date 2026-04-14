@@ -1,4 +1,4 @@
-import { renderAccountTable } from "./renderAccountTable.js";
+﻿import { renderAccountTable } from "./renderAccountTable.js";
 let currentPage = 1;
 
 export async function filterAccount(pageIsSelected = 1) {
@@ -74,7 +74,7 @@ export async function filterAccount(pageIsSelected = 1) {
   params.append("limit", limit);
   params.append("offset", offset);
 
-  let url = `api/account/get_account.php?${params.toString()}`;
+  let url = `../api/account/get_account.php?${params.toString()}`;
   console.log("Request URL:", url);
   try {
     let response = await fetch(url);

@@ -1,4 +1,4 @@
-import { renderPaymentTable } from "./renderPaymentTable.js";
+﻿import { renderPaymentTable } from "./renderPaymentTable.js";
 import { renderPagination } from "../pagination.js";
 
 
@@ -39,7 +39,7 @@ export async function filterPayment(currentPage) {
     params.append("offset", offset);
 
     try {
-        let response = await fetch(`api/payments/list.php?${params.toString()}`);
+        let response = await fetch(`../api/payments/list.php?${params.toString()}`);
 
         if (!response.ok) {
             throw new Error("Lỗi khi lấy dữ liệu! HTTP Status: " + response.status);

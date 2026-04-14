@@ -1,4 +1,4 @@
-import { updatePrivilegeData } from "./updatePrivilegeData.js";
+﻿import { updatePrivilegeData } from "./updatePrivilegeData.js";
 import { detailPrivilegeData } from "./detailPrivilegeData.js";
 import { lockPrivilegeData } from "./lockPrivilegeData.js";
 
@@ -10,7 +10,7 @@ var lockPrivilege = data[7] && data[7].includes(5) ? '' : 'none__item';
 
 // Hàm cập nhật lại dữ liệu cho bảng Người dùng
 export async function renderPrivilegeTable() {
-  const response = await fetch('api/action/getDetailList.php', {
+  const response = await fetch('../api/action/getDetailList.php', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'

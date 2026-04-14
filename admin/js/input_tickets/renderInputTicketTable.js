@@ -1,4 +1,4 @@
-import { fetchData } from "../../../public/js/book/getDataBook.js";
+﻿import { fetchData } from "../../../public/js/book/getDataBook.js";
 import { isNotFirstItemSelected } from "../selectEvents.js";
 import { toast } from "../../../public/js/toast.js";
 import { vietnamMoneyFormat, onlyInputNumberChar } from "../others.js";
@@ -91,7 +91,7 @@ export function updateInputTicketDetailTable(
       );
       if (bookSelect) {
         bookSelect.innerHTML = `<option value="" selected>Chọn Sách </option>`;
-        let books = await fetchData(`api/books/list.php?status=Đang%20bán`);
+        let books = await fetchData(`../api/books/list.php?status=Đang%20bán`);
         books.data.forEach((book) => {
           bookSelect.innerHTML += `<option value="${book.id}|${book.name}|${
             book.basePrice

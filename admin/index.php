@@ -32,13 +32,13 @@ if (count($role) <= 0) {
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Reset CSS -->
-    <link rel="stylesheet" href="admin/assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
     <!-- Styles CSS -->
-    <link rel="stylesheet" href="admin/assets/css/base.css">
-    <link rel="stylesheet" href="admin/assets/css/common.css">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/common.css">
 
     <link rel="stylesheet" href="../public/css/toast.css">
-    <link rel="stylesheet" href="admin/responsive/Responsive.css">
+    <link rel="stylesheet" href="responsive/Responsive.css">
 
     <!-- Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -257,13 +257,13 @@ if (count($role) <= 0) {
         <div class="spinner"></div>
     </div>
 
-    <script src="public/js/spinner.js"></script>
+    <script src="../public/js/spinner.js"></script>
 
     <!-- Javascript -->
-    <script type="module" src="admin/js/main.js"></script>
-    <script type="module" src="admin/js/changeMainContent.js"></script>
-    <script type="module" src="admin/js/showSidebar.js"></script>
-    <script type="module" src="admin/responsive/responsive.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/changeMainContent.js"></script>
+    <script type="module" src="js/showSidebar.js"></script>
+    <script type="module" src="responsive/responsive.js"></script>
     <script type="module" src="../public/js/toast.js"></script>
 
 </body>

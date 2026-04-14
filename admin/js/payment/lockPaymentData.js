@@ -1,11 +1,11 @@
-import { fetchData } from "../../../public/js/book/getDataBook.js";
+﻿import { fetchData } from "../../../public/js/book/getDataBook.js";
 import { toast } from "../../../public/js/toast.js";
 import { showNotification } from "../dialogMessage.js";
 import { renderPaymentTable } from "./renderPaymentTable.js";
 
 export async function lockPaymentData(idPaymentSelected) {
     let payment = await fetchData(
-        `api/payments/detail.php?id=${idPaymentSelected}`
+        `../api/payments/detail.php?id=${idPaymentSelected}`
     );
 
     const lockDialog = document.createElement("dialog");
@@ -58,7 +58,7 @@ export async function lockPaymentData(idPaymentSelected) {
             const status = document.getElementById("lock-payment-status").value;
 
             try {
-                const response = await fetch("api/payments/lock.php", {
+                const response = await fetch("../api/payments/lock.php", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/x-www-form-urlencoded",

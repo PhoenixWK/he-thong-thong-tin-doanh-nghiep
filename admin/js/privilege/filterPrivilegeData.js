@@ -1,11 +1,11 @@
-import { renderPrivilegeTable } from "./renderPrivilegeTable.js";
+﻿import { renderPrivilegeTable } from "./renderPrivilegeTable.js";
 import { renderPagination } from "../pagination.js";
 
 export async function lockRole(privilegeId, status) {
     let formData = new URLSearchParams();
     formData.append('id', privilegeId);
     formData.append('status', status);
-    let response = await fetch('api/privileges/lock.php', {
+    let response = await fetch('../api/privileges/lock.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -57,7 +57,7 @@ export async function filterPrivilege(currentPage) {
     params.append("offset", offset);
 
     try {
-        let response = await fetch(`api/privileges/list.php?${params.toString()}`);
+        let response = await fetch(`../api/privileges/list.php?${params.toString()}`);
 
         if (!response.ok) {
             throw new Error("Lỗi khi lấy dữ liệu! HTTP Status: " + response.status);

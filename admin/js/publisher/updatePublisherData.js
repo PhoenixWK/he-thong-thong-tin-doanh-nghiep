@@ -1,4 +1,4 @@
-import { isNotFirstItemSelected } from "../selectEvents.js";
+﻿import { isNotFirstItemSelected } from "../selectEvents.js";
 import { fetchData } from "../../../public/js/book/getDataBook.js";
 import { toast } from "../../../public/js/toast.js";
 import { showNotification } from "../dialogMessage.js";
@@ -8,7 +8,7 @@ import { renderPublisherTable } from "./renderPublisherTable.js";
 export async function updatePublisherData(idPublisherSelected) {
   // Gọi api để lấy được thông tin Nhà xuất bản được nhấn
   let publisher = await fetchData(
-    `api/publishers/detail.php?id=${idPublisherSelected}`
+    `../api/publishers/detail.php?id=${idPublisherSelected}`
   );
 
   // // Biến chứa đối tượng là nút "Sửa"
@@ -97,7 +97,7 @@ export async function updatePublisherData(idPublisherSelected) {
         let yes = await showNotification("Bạn có đồng ý lưu chỉnh sửa không.");
         if (yes) {
           try {
-            const response = await fetch("api/publishers/update.php", {
+            const response = await fetch("../api/publishers/update.php", {
               method: "POST",
               headers: {
                 "Content-Type": "application/x-www-form-urlencoded",

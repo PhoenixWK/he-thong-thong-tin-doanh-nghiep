@@ -1,4 +1,4 @@
-import { updateAccountData } from "./updateAccountData.js";
+﻿import { updateAccountData } from "./updateAccountData.js";
 import { detailAccountData } from "./detailAccountData.js";
 import { lockAccountData } from "./lockAccountData.js";
 import { filterAccount } from "./filterAccountData.js";
@@ -75,7 +75,7 @@ import { filterAccount } from "./filterAccountData.js";
 //     `;
 //     } else {
 //       try {
-//         const role = fetch(`api/roles/get.php?roleId=${data[i].maQuyen}`);
+//         const role = fetch(`../api/roles/get.php?roleId=${data[i].maQuyen}`);
 //         const quyen = await role.text();
 //         console.log(quyen);
 
@@ -191,7 +191,7 @@ export async function renderAccountTable(pageIsSelected = 1) {
     } else {
       try {
         const roleResponse = await fetch(
-          `api/roles/get.php?roleId=${data[i].maQuyen}`
+          `../api/roles/get.php?roleId=${data[i].maQuyen}`
         );
         const roleData = await roleResponse.json();
 

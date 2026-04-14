@@ -1,4 +1,4 @@
-import { fetchData } from "../../../public/js/book/getDataBook.js";
+﻿import { fetchData } from "../../../public/js/book/getDataBook.js";
 import { toast } from "../../../public/js/toast.js";
 import { showNotification } from "../dialogMessage.js";
 import { renderCoverTable } from "./renderCoverTable.js";
@@ -6,7 +6,7 @@ import { renderCoverTable } from "./renderCoverTable.js";
 //
 export async function lockCoverData(idCoverSelected) {
   // Gọi api để lấy được thông tin loại bìa được nhấn
-  let cover = await fetchData(`api/covers/detail.php?id=${idCoverSelected}`);
+  let cover = await fetchData(`../api/covers/detail.php?id=${idCoverSelected}`);
 
   // // Biến chứa đối tượng là nút "Khoá"
   // const lockButton = document.getElementById("lock-button-cover");
@@ -62,8 +62,8 @@ export async function lockCoverData(idCoverSelected) {
     e.preventDefault();
 
     const id = document.getElementById("lock-cover-id").value;
-    let cover = await fetchData(`api/covers/detail.php?id=${id}`);
-    let bookList = await fetchData(`api/books/list.php?cover=${cover.data.name}`);
+    let cover = await fetchData(`../api/covers/detail.php?id=${id}`);
+    let bookList = await fetchData(`../api/books/list.php?cover=${cover.data.name}`);
     if(bookList.data.length > 0){
        toast({
             title: "Cảnh báo",
@@ -81,7 +81,7 @@ export async function lockCoverData(idCoverSelected) {
         const status = document.getElementById("lock-cover-status").value;
   
         try {
-          const response = await fetch("api/covers/lock.php", {
+          const response = await fetch("../api/covers/lock.php", {
             method: "POST",
             headers: {
               "Content-Type": "application/x-www-form-urlencoded",

@@ -1,4 +1,4 @@
-import { renderOrderTable } from "./renderOrderTable.js";
+﻿import { renderOrderTable } from "./renderOrderTable.js";
 import { renderPagination } from "../pagination.js";
 
 // Tiến hành lọc
@@ -65,7 +65,7 @@ export async function filterOrder(currentPage) {
   params.append("offset", offset);
 
   try {
-    let response = await fetch(`api/orders/listBase.php?${params.toString()}`);
+    let response = await fetch(`../api/orders/listBase.php?${params.toString()}`);
 
     if (!response.ok) {
       throw new Error("Lỗi khi lấy dữ liệu! HTTP Status: " + response.status);

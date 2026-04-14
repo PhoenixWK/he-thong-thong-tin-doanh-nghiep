@@ -1,4 +1,4 @@
-import { fetchData } from "../../../public/js/book/getDataBook.js";
+﻿import { fetchData } from "../../../public/js/book/getDataBook.js";
 import { toast } from "../../../public/js/toast.js";
 import { vietnamMoneyFormat } from "../others.js";
 import { renderOrderDetailTable } from "./renderOrderTable.js";
@@ -8,7 +8,7 @@ import { renderOrderTable } from "./renderOrderTable.js";
 // Hàm thiết lập sự kiện hiện sửa một đơn hàng
 export async function updateOrderData(idOrderSelected) {
   // Truy vấn csdl để lấy ra đơn hàng được chọn
-  const order = await fetchData(`api/orders/listBase.php?id=${idOrderSelected}`);
+  const order = await fetchData(`../api/orders/listBase.php?id=${idOrderSelected}`);
 
   const loginEmployee = JSON.parse(sessionStorage.getItem('user'));
 
@@ -192,7 +192,7 @@ export async function updateOrderData(idOrderSelected) {
 
     // Tiến hành gọi api
     try {
-      const response = await fetch("api/orders/update.php", {
+      const response = await fetch("../api/orders/update.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",

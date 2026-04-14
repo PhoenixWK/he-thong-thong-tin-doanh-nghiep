@@ -1,4 +1,4 @@
-// import { isNotFirstItemSelected } from "../selectEvents.js";
+﻿// import { isNotFirstItemSelected } from "../selectEvents.js";
 
 // // Hàm phân tách địa chỉ (Nếu có, tách thành các phần như Tỉnh/Thành phố, Quận/Huyện)
 // function splitAddressToShip(address) {
@@ -27,9 +27,9 @@
 //   // Gọi song song hai API: một để lấy thông tin người dùng, một để lấy địa chỉ
 //   Promise.all([
 //     fetch(
-//       `api/address/getAddress.php?maNguoiDung=${id}`
+//       `../api/address/getAddress.php?maNguoiDung=${id}`
 //     ).then((response) => response.json()),
-//     fetch(`http://localhost:3000/api/account/detail_account.php?id=${id}`).then(
+//     fetch(`../api/account/detail_account.php?id=${id}`).then(
 //       (response) => response.json()
 //     ),
 //   ])
@@ -45,7 +45,7 @@
 //         detailDialog.classList.add("dialog", "account");
 //         detailDialog.style.width = "772px";
 //         try {
-//           let role = await fetch(`api/roles/get.php?roleId=${user.maQuyen}`);
+//           let role = await fetch(`../api/roles/get.php?roleId=${user.maQuyen}`);
 //           let roleData = await role.json();
 //           console.log(roleData);
 
@@ -191,14 +191,14 @@ export async function detailAccountData(idAccountSelected) {
     let param = new URLSearchParams();
     param.append("maNguoiDung", id);
     const [addressResponse, userResponse] = await Promise.all([
-      fetch(`api/address/getAddress.php`, {
+      fetch(`../api/address/getAddress.php`, {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded"
         },
         body: param.toString()
       }),
-      fetch(`api/account/detail_account.php?id=${id}`),
+      fetch(`../api/account/detail_account.php?id=${id}`),
     ]);
 
     const addressData = await addressResponse.json();
@@ -218,7 +218,7 @@ export async function detailAccountData(idAccountSelected) {
       roleName = "Chưa có quyền";
     } else {
       try {
-        let role = await fetch(`api/roles/get.php?roleId=${user.maQuyen}`);
+        let role = await fetch(`../api/roles/get.php?roleId=${user.maQuyen}`);
         let roleData = await role.json();
         console.log("RoleData:", roleData);
         if (roleData && roleData.data) {

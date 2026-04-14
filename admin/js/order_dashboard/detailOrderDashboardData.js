@@ -1,4 +1,4 @@
-import { fetchData } from "../../../public/js/book/getDataBook.js";
+﻿import { fetchData } from "../../../public/js/book/getDataBook.js";
 import { toast } from "../../../public/js/toast.js";
 import { vietnamMoneyFormat } from "../others.js";
 import { showNotification } from "../dialogMessage.js";
@@ -15,7 +15,7 @@ async function renderOrderTableForDashboard(customerId) {
 
   // Gọi api để truy vấn dữ liệu
   const orders = await fetchData(
-    `api/orders/listBase.php?customerId=${customerId}&createStart=${dateStart}&createEnd=${dateEnd}`
+    `../api/orders/listBase.php?customerId=${customerId}&createStart=${dateStart}&createEnd=${dateEnd}`
   );
 
   // Biến chứa đối tượng bảng Chi tiết đơn hàng
@@ -82,7 +82,7 @@ async function renderOrderTableForDashboard(customerId) {
 export async function detailOrderDashboardData(customerIdSelected) {
   // Truy vấn csdl để lấy ra thống kê đơn hàng được chọn
   const user = await fetchData(
-    `api/account/detail_account.php?id=${customerIdSelected}`
+    `../api/account/detail_account.php?id=${customerIdSelected}`
   );
 
   console.log(user);

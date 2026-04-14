@@ -1,4 +1,4 @@
-import { renderDiscountTable } from "./renderDiscountTable.js";
+﻿import { renderDiscountTable } from "./renderDiscountTable.js";
 import { toast } from "../../../public/js/toast.js";
 import { isNotFirstItemSelected } from "../selectEvents.js";
 import { clickToShowDatePicker, defaultDateSelected } from "../others.js";
@@ -218,7 +218,7 @@ export function addDiscountData() {
 
         try {
           // Gửi yêu cầu POS T đến API
-          const response = await fetch("api/discounts/create.php", {
+          const response = await fetch("../api/discounts/create.php", {
             method: "POST",
             headers: {
               "Content-Type": "application/x-www-form-urlencoded",

@@ -1,4 +1,4 @@
-import {
+﻿import {
   vietnamMoneyFormat,
   numberToVietnamWords,
   formatDate2,
@@ -113,10 +113,10 @@ export async function renderInvestDashboardTable(
 
   showLoading();
   // Dữ liệu về tất cả phiếu nhập hiện có
-  const inputTickets = await fetchData(`api/input_tickets/list.php?`);
+  const inputTickets = await fetchData(`../api/input_tickets/list.php?`);
   // Dữ liệu về tất cả chi tiết phiếu nhập hiện có
   const inputTicketDetails = await fetchData(
-    `api/input_ticket_details/list.php`
+    `../api/input_ticket_details/list.php`
   );
   // hideLoading();
   // Tuỳ theo lựa chọn mà có dữ liệu thời gian để thống kê

@@ -1,4 +1,4 @@
-import { fetchData } from "../../../public/js/book/getDataBook.js";
+﻿import { fetchData } from "../../../public/js/book/getDataBook.js";
 import { toast } from "../../../public/js/toast.js";
 import { showNotification } from "../dialogMessage.js";
 import { renderCategoryTable } from "./renderCategoryTable.js";
@@ -7,7 +7,7 @@ import { renderCategoryTable } from "./renderCategoryTable.js";
 export async function lockCategoryData(idCategorySelected) {
   // Gọi api để lấy được thông tin thể loại được nhấn
   let category = await fetchData(
-    `api/categories/detail.php?id=${idCategorySelected}`
+    `../api/categories/detail.php?id=${idCategorySelected}`
   );
 
   // // Biến chứa đối tượng là nút "Khoá"
@@ -66,8 +66,8 @@ export async function lockCategoryData(idCategorySelected) {
     e.preventDefault();
 
     const id = document.getElementById("lock-category-id").value;
-    let category = await fetchData(`api/categories/detail.php?id=${id}`);
-    let bookList = await fetchData(`api/books/list.php?category=${category.data.name}`);
+    let category = await fetchData(`../api/categories/detail.php?id=${id}`);
+    let bookList = await fetchData(`../api/books/list.php?category=${category.data.name}`);
     if(bookList.data.length > 0){
        toast({
             title: "Cảnh báo",
@@ -84,7 +84,7 @@ export async function lockCategoryData(idCategorySelected) {
         const status = document.getElementById("lock-category-status").value;
   
         try {
-          const response = await fetch("api/categories/lock.php", {
+          const response = await fetch("../api/categories/lock.php", {
             method: "POST",
             headers: {
               "Content-Type": "application/x-www-form-urlencoded",

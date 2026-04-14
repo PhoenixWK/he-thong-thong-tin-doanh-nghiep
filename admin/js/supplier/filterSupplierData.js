@@ -1,4 +1,4 @@
-import { renderSupplierTable } from "./renderSupplierTable.js";
+﻿import { renderSupplierTable } from "./renderSupplierTable.js";
 import { renderPagination } from "../pagination.js";
 import { hideLoading, showLoading } from "../spiner.js";
 
@@ -38,7 +38,7 @@ export async function filterSupplier(currentPage) {
   params.append("offset", offset);
 
   try {
-    let response = await fetch(`api/suppliers/list.php?${params.toString()}`);
+    let response = await fetch(`../api/suppliers/list.php?${params.toString()}`);
 
     if (!response.ok) {
       throw new Error("Lỗi khi lấy dữ liệu! HTTP Status: " + response.status);

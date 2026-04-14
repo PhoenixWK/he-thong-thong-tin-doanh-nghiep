@@ -1,4 +1,4 @@
-import { fetchData } from "../../../public/js/book/getDataBook.js";
+﻿import { fetchData } from "../../../public/js/book/getDataBook.js";
 import { toast } from "../../../public/js/toast.js";
 import { showNotification } from "../dialogMessage.js";
 import { renderBookTable } from "./renderBookTable.js";
@@ -6,7 +6,7 @@ import { renderBookTable } from "./renderBookTable.js";
 //
 export async function lockBookData(idBookSelected) {
   // Gọi api để lấy được thông tin sách được nhấn
-  let book = await fetchData(`api/books/detail.php?id=${idBookSelected}`);
+  let book = await fetchData(`../api/books/detail.php?id=${idBookSelected}`);
 
   // // Biến chứa đối tượng là nút "Khoá"
   // const lockButton = document.getElementById("lock-button-book");
@@ -70,7 +70,7 @@ export async function lockBookData(idBookSelected) {
       const status = document.getElementById("lock-book-status").value;
 
       try {
-        const response = await fetch("api/books/lock.php", {
+        const response = await fetch("../api/books/lock.php", {
           method: "POST",
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",

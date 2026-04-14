@@ -1,4 +1,4 @@
-import { renderDiscountTable } from "./renderDiscountTable.js";
+﻿import { renderDiscountTable } from "./renderDiscountTable.js";
 import { renderPagination } from "../pagination.js";
 
 // Hàm thiết lập sự kiện lọc thông tin bảng Khuyến mãi
@@ -36,7 +36,7 @@ export async function filterDiscount(currentPage) {
   params.append("offset", offset);
 
   try {
-    let response = await fetch(`api/discounts/list.php?${params.toString()}`);
+    let response = await fetch(`../api/discounts/list.php?${params.toString()}`);
 
     if (!response.ok) {
       throw new Error("Lỗi khi lấy dữ liệu! HTTP Status: " + response.status);

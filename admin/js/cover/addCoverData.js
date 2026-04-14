@@ -1,4 +1,4 @@
-import { isNotFirstItemSelected } from "../selectEvents.js";
+﻿import { isNotFirstItemSelected } from "../selectEvents.js";
 import { toast } from "../../../public/js/toast.js";
 import { showNotification } from "../dialogMessage.js";
 import { renderCoverTable } from "./renderCoverTable.js";
@@ -117,7 +117,7 @@ export function addCoverData() {
           );
           if (yes) {
             try {
-              const response = await fetch("api/covers/create.php", {
+              const response = await fetch("../api/covers/create.php", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/x-www-form-urlencoded",

@@ -1,4 +1,4 @@
-import { fetchData } from "../../../public/js/book/getDataBook.js";
+﻿import { fetchData } from "../../../public/js/book/getDataBook.js";
 import { vietnamMoneyFormat } from "../others.js";
 import { updateOrderData } from "./updateOrderData.js";
 import { printOrderTicket } from "./printOrderTicket.js";
@@ -27,7 +27,7 @@ function splitAddressToShip(address) {
 // Hàm cập nhật lại dữ liệu cho chi tiết đơn hàng
 export async function renderOrderDetailTable(orderIdSelected) {
   const orderDetails = await fetchData(
-    `api/order_details/list.php?orderId=${orderIdSelected}`
+    `../api/order_details/list.php?orderId=${orderIdSelected}`
   );
 
   // Biến chứa đối tượng bảng Chi tiết đơn hàng

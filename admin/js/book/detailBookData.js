@@ -1,21 +1,21 @@
-import { isNotFirstItemSelected } from "../selectEvents.js";
+﻿import { isNotFirstItemSelected } from "../selectEvents.js";
 import { fetchData } from "../../../public/js/book/getDataBook.js";
 
 // Hàm thiết lập sự kiện hiện chi tiết Sách cho bảng
 export async function detailBookData(idBookSelected) {
   // Truy vấn từ csdl thông tin các đối tượng cần thiết
-  const book = await fetchData(`api/books/detail.php?id=${idBookSelected}`);
+  const book = await fetchData(`../api/books/detail.php?id=${idBookSelected}`);
   const author = await fetchData(
-    `api/authors/detail.php?id=${book.data.authorId}`
+    `../api/authors/detail.php?id=${book.data.authorId}`
   );
   const category = await fetchData(
-    `api/categories/detail.php?id=${book.data.coverId}`
+    `../api/categories/detail.php?id=${book.data.coverId}`
   );
   const cover = await fetchData(
-    `api/covers/detail.php?id=${book.data.coverId}`
+    `../api/covers/detail.php?id=${book.data.coverId}`
   );
   const publisher = await fetchData(
-    `api/publishers/detail.php?id=${book.data.publisherId}`
+    `../api/publishers/detail.php?id=${book.data.publisherId}`
   );
 
   //   // Biến chứa đối tượng là nút "Chi tiết"

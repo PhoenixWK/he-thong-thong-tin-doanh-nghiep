@@ -1,11 +1,11 @@
-import { toast } from "../../../public/js/toast.js";
+﻿import { toast } from "../../../public/js/toast.js";
 import { renderAccountTable } from "./renderAccountTable.js";
 export function lockAccountData(idAccountSelected) {
   // Phải truy vấn từ CSDL thông qua idAccountSelected để lấy được dữ liệu của đối tượng hiện tại
   // ...
   const id = idAccountSelected.textContent; // id của người dùng được khoá
   console.log(id);
-  fetch(`http://localhost:3000/api/account/detail_account.php?id=${id}`)
+  fetch(`../api/account/detail_account.php?id=${id}`)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
@@ -66,7 +66,7 @@ export function lockAccountData(idAccountSelected) {
           account.append("accountStatus", nextStatus); // Thêm trạng thái tài khoản vào dữ liệu gửi đi
           // Gửi yêu cầu khoá tài khoản đến server
           fetch(
-            `http://localhost:3000/api/account/lock_account.php?maNguoiDung=${id}`,
+            `../api/account/lock_account.php?maNguoiDung=${id}`,
             {
               method: "POST",
               headers: {
