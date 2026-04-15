@@ -44,7 +44,7 @@ if (!$pwMatch) {
 // Lấy thông tin nhân viên
 $stmt2 = $db->prepare("SELECT nv.*, nd.hoVaTen, nd.soDT, nd.email FROM nhanVien nv
     JOIN nguoidung nd ON nv.maNguoiDung = nd.maNguoiDung
-    WHERE nv.maNguoiDung = ? AND nv.trangThai = 'Dang lam' LIMIT 1");
+    WHERE nv.maNguoiDung = ? AND nv.trangThai = 'Đang làm' LIMIT 1");
 $stmt2->execute([$user['maNguoiDung']]);
 $nv = $stmt2->fetch();
 

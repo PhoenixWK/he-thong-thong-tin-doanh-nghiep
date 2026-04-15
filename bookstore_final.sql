@@ -835,7 +835,7 @@ INSERT INTO `nguoidung` (`maNguoiDung`, `hoVaTen`, `soDT`, `email`, `tenTaiKhoan
 (80, 'Võ Chí Minh', NULL, NULL, 'chminh', '202cb962ac59075b964b07152d234b70', NULL, '2025-11-11 15:31:47', 'Hoạt động'),
 (81, 'Võ Chí Minh', '0912345678', 'vcm@gmail.com', 'CMinh', 'c92f1d1f2619172bf87a12e5915702a6', 2, '2025-11-18 10:56:11', 'Hoạt động'),
 (82, 'Test', NULL, NULL, 'Chi Minh', '202cb962ac59075b964b07152d234b70', NULL, '2025-11-23 01:04:31', 'Hoạt động'),
-(83, 'HR Manager', '0900000083', 'hrmanager@bookstore.com', 'hrmanager', 'e10adc3949ba59abbe56e057f20f883e', NULL, '2026-04-14 00:00:00', 'Hoạt động');
+(83, 'HR Manager', '0900000083', 'hrmanager@bookstore.com', 'hrmanager', 'e10adc3949ba59abbe56e057f20f883e', 2, '2026-04-14 00:00:00', 'Hoạt động');
 
 -- --------------------------------------------------------
 
