@@ -12,7 +12,7 @@ $nam = isset($_GET['nam']) ? (int)$_GET['nam'] : (int)date('Y');
 
 $stmt = $db->prepare(
     "SELECT maBangLuong, thang, nam, luongCoBan, heSoLuong, phuCap, thuong, khauTru,
-            soNgayLam, soNgayNghiPhep, thucLinh, ghiChu, ngayTao
+            soNgayLam, soNgayNghiPhep, thucLinh, ghiChu
      FROM bangLuong WHERE maNhanVien = ? AND nam = ? ORDER BY thang ASC"
 );
 $stmt->execute([$emp['maNhanVien'], $nam]);

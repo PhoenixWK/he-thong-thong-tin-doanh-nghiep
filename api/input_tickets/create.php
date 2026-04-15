@@ -23,7 +23,7 @@ try {
         [
             "ngayTaoPhieu" => $createAt,
             "maNCC" => $supplierId,
-            "maNhanVien" => $employeeId,
+            "maNhanVien" => $employeeId ?: null, // Set null if empty
             "tongTienNhap" => $total,
             "trangThai" => $status,
             "ngayCapNhat" => $updateDateTime
