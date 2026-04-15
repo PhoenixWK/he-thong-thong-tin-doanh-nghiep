@@ -8,10 +8,11 @@ $pass = trim($body['password'] ?? '');
 if (!$user || !$pass) hrm_json(['error' => 'Thiếu thông tin đăng nhập'], 400);
 
 $pdo = HRM_DB::get();
-$stmt = $pdo->prepare("SELECT maNguoiDung, hoVaTen, tenTaiKhoan FROM nguoidung WHERE tenTaiKhoan=? AND matKhau=? AND trangThai=1");
+// Chỉ cho phép Quản lí (maQuyen=2) hoặc Quản trị viên (maQuyen=15) truy cập cổng HR Manager
+$stmt = $pdo->prepare("SELECT maNguoiDung, hoVaTen, tenTaiKhoan FROM nguoidung WHERE tenTaiKhoan=? AND matKhau=? AND trangThai='Hoạt động' AND maQuyen IN (2, 15)");
 $stmt->execute([$user, md5($pass)]);
 $row = $stmt->fetch();
-if (!$row) hrm_json(['error' => 'Tên đăng nhập hoặc mật khẩu không đúng'], 401);
+if (!$row) hrm_json(['error' => 'Tên đăng nhập hoặc mật khẩu không đúng, hoặc tài khoản không có quyền truy cập'], 401);
 
 $_SESSION['hrm_manager'] = [
     'maNguoiDung' => $row['maNguoiDung'],
