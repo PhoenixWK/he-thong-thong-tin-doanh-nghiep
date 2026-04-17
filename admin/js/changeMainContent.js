@@ -21,8 +21,10 @@ import { fetchData } from "../../public/js/book/getDataBook.js";
 // import { renderPrivilegeTable } from "./privilege/renderPrivilegeTable.js";
 import { updatePrivilegeTable } from "./privilege/updatePrivilegeTable.js";
 import { updatePaymentTable } from "./payment/updatePaymentTable.js";
+import { initLeave, initSalary, HR_LEAVE_HTML, HR_SALARY_HTML } from "./hr/hrEmployee.js";
+import { HRM_EMPLOYEES_HTML, HRM_SALARY_HTML, HRM_LEAVES_HTML, HRM_STATS_HTML, initHRMEmployees, initHRMSalary, initHRMLeaves, initHRMStats } from "./hr/hrManager.js";
 
-const data = JSON.parse(sessionStorage.getItem("dataRole"));
+const data = JSON.parse(sessionStorage.getItem("dataRole")) ?? {};
 
 /**
 
@@ -1183,6 +1185,16 @@ const mainContentMap = {
   </div>
   <div class="main__pagination" id="admin-pagination-payment"></div>
   `,
+
+  // ---- HR Employee inline views (privilegeId 21-22) ----
+  hr_leave:   HR_LEAVE_HTML,
+  hr_salary:  HR_SALARY_HTML,
+
+  // ---- HR Manager inline views (privilegeId 17-19) ----
+  hrm_employees: HRM_EMPLOYEES_HTML,
+  hrm_salary:    HRM_SALARY_HTML,
+  hrm_leaves:    HRM_LEAVES_HTML,
+  hrm_stats:     HRM_STATS_HTML,
 };
 
 // Biến dùng để chuyển nội dung chính tương ứng với từng trang
@@ -1196,6 +1208,14 @@ const menuInSideBar = document.querySelectorAll(
 // Gán sự kiện cho từng mục ở sidebar
 menuInSideBar.forEach((item, i) => {
   item.addEventListener("click", async (e) => {
+    // Lấy ra giá trị của mục được nhấn
+    const mainContentKey = item
+      .querySelector(".sidebar__action")
+      ?.getAttribute("data-main-content");
+
+    // Nếu không có data-main-content (link ngoài như HR), cho trình duyệt điều hướng bình thường
+    if (!mainContentKey) return;
+
     // Loại bỏ đi giá trị mặc định
     e.preventDefault();
 
@@ -1208,11 +1228,6 @@ menuInSideBar.forEach((item, i) => {
         otherItem.classList.remove("active");
       }
     });
-
-    // Lấy ra giá trị của mục được nhấn, chuyển trang
-    const mainContentKey = item
-      .querySelector(".sidebar__action")
-      .getAttribute("data-main-content");
     if (mainContentMap[mainContentKey]) {
       // Kéo lên đầu trang mỗi lần chuyển trang
       window.scrollTo(0, 0);
@@ -1263,6 +1278,18 @@ menuInSideBar.forEach((item, i) => {
         updatePublisherTable();
       } else if (mainContentKey === "payment") {
         updatePaymentTable();
+      } else if (mainContentKey === "hr_leave") {
+        initLeave();
+      } else if (mainContentKey === "hr_salary") {
+        initSalary();
+      } else if (mainContentKey === "hrm_employees") {
+        initHRMEmployees();
+      } else if (mainContentKey === "hrm_salary") {
+        initHRMSalary();
+      } else if (mainContentKey === "hrm_leaves") {
+        initHRMLeaves();
+      } else if (mainContentKey === "hrm_stats") {
+        initHRMStats();
       }
     }
   });

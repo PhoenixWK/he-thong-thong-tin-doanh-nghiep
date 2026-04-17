@@ -528,3 +528,102 @@ button {
     font-weight: 600;
   }
 } */
+
+/* ── HR Employee Module ────────────────────────────────────────── */
+.hr-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 16px rgba(0,0,0,.08);
+  padding: 24px;
+  margin: 15px 0 0 30px;
+  max-width: 680px;
+}
+.hr-card__title {
+  font-size: .95rem;
+  font-weight: 700;
+  color: #1a3c6e;
+  border-bottom: 2px solid #1a3c6e;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+.hr-info-row {
+  display: flex;
+  padding: 11px 0;
+  border-bottom: 1px solid #f2f2f2;
+  align-items: center;
+}
+.hr-info-row:last-child { border-bottom: none; }
+.hr-info-label {
+  width: 190px;
+  color: #888;
+  font-size: .88rem;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.hr-info-label i { width: 16px; text-align: center; }
+.hr-label {
+  font-size: .85rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+  color: #374151;
+}
+.hr-input {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: .9rem;
+  outline: none;
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: border-color .15s, box-shadow .15s;
+}
+.hr-input:focus {
+  border-color: #1a6fa3;
+  box-shadow: 0 0 0 2px rgba(26,111,163,.12);
+}
+.hr-select {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: .9rem;
+  outline: none;
+  font-family: inherit;
+  background: #fff;
+  transition: border-color .15s, box-shadow .15s;
+}
+.hr-select:focus {
+  border-color: #1a6fa3;
+  box-shadow: 0 0 0 2px rgba(26,111,163,.12);
+}
+.hr-form-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0,0,0,.09);
+  padding: 28px;
+  max-width: 580px;
+  margin-top: 8px;
+}
+.hr-formula-box {
+  margin-top: 12px;
+  padding: 13px 18px;
+  background: #eaf4fd;
+  border-left: 4px solid #1a6fa3;
+  border-radius: 0 8px 8px 0;
+  font-size: .88rem;
+}
+.badge {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 12px;
+  font-size: .78rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.badge-success { background: #d1fae5; color: #065f46; }
+.badge-warning { background: #fef3c7; color: #92400e; }
+.badge-danger  { background: #fee2e2; color: #991b1b; }
+.badge-info    { background: #dbeafe; color: #1e40af; }

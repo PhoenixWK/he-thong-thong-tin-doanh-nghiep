@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 if ($_SERVER['REQUEST_URI'] !== '/' && !isset($_GET['pageSize']) && !isset($_GET['page']) && !isset($_GET['minPrice']) && !isset($_GET['maxPrice']) && !isset($_GET['cart-holder']) && !isset($_GET['page-action']) && !isset($_GET['account']) && !isset($_GET['info']) && !isset($_GET['order']) && !isset($_GET['orderId'])) {
     include './404-Page/index.php';
@@ -861,6 +862,11 @@ if ($_SERVER['REQUEST_URI'] !== '/' && !isset($_GET['pageSize']) && !isset($_GET
                 echo '<a class="menu-item" data-id="home-view">Trang chủ</a>';
 
                 echo '<a class="menu-item" data-id="all-category">Tất cả</a>';
+
+                // Hiển thị link Trang quản lý nếu người dùng đã đăng nhập và có phân quyền
+                if (!empty($_SESSION['role']['data'])) {
+                    echo '<a class="menu-item menu-item--admin" href="/admin/" style="color:#ffd700;font-weight:600;">Trang quản lý</a>';
+                }
                 foreach ($categoryList as $row) {
                     if ($row['trangThai'] == 'Hoạt động') {
                         echo '<a class="menu-item" data-id="' . $row['maTheLoai'] . '">' . $row['tenTheLoai'] . '</a>';

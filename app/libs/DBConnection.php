@@ -4,7 +4,7 @@
     {
         protected $dsn = "mysql:host=localhost;port=3306;dbname=bookstore;charset=utf8";
         protected $username = "root";
-        protected $password = "";
+        protected $password = "123456";
 
         protected $table_name = 'default_table';
         // Mảng lưu trữ các param được dùng để truy vấn

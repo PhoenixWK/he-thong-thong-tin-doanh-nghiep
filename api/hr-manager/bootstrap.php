@@ -5,18 +5,11 @@
  */
 if (session_status() === PHP_SESSION_NONE) session_start();
 
+require_once __DIR__ . '/../../app/libs/DBConnection.php';
+
 class HRM_DB {
-    private static $pdo = null;
     public static function get(): PDO {
-        if (!self::$pdo) {
-            self::$pdo = new PDO(
-                'mysql:host=localhost;dbname=bookstore;charset=utf8mb4',
-                'root', '',
-                [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]
-            );
-        }
-        return self::$pdo;
+        return (new app_libs_DBConnection())->open_connect();
     }
 }
 
@@ -28,8 +21,22 @@ function hrm_json(array $data, int $code = 200): void {
 }
 
 function hrm_require_auth(): array {
-    if (empty($_SESSION['hrm_manager'])) {
-        hrm_json(['error' => 'Chưa đăng nhập'], 401);
+    // Ưu tiên session hr-manager riêng
+    if (!empty($_SESSION['hrm_manager'])) {
+        return $_SESSION['hrm_manager'];
     }
-    return $_SESSION['hrm_manager'];
+    // Cho phép dùng session admin nếu có privilegeId 17/18/19
+    if (!empty($_SESSION['role']['data'])) {
+        $hrmPrivileges = [17, 18, 19];
+        $ids = array_column($_SESSION['role']['data'], 'privilegeId');
+        if (!empty(array_intersect($ids, $hrmPrivileges))) {
+            $u = $_SESSION['user'];
+            return [
+                'maNguoiDung' => $u['id'] ?? null,
+                'hoVaTen'     => $u['name'] ?? '',
+                'vaiTro'      => 'Quản lý nhân sự',
+            ];
+        }
+    }
+    hrm_json(['error' => 'Chưa đăng nhập'], 401);
 }

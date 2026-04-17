@@ -1,21 +1,9 @@
 <?php
-/**
- * HR Module - Database Connection
- * Decoupled from main app - has own connection class
- */
-class HR_DB {
-    private static $pdo = null;
+require_once __DIR__ . '/../../app/libs/DBConnection.php';
 
+class HR_DB {
     public static function get(): PDO {
-        if (self::$pdo === null) {
-            self::$pdo = new PDO(
-                'mysql:host=localhost;port=3306;dbname=bookstore;charset=utf8mb4',
-                'root',
-                '',
-                [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]
-            );
-        }
-        return self::$pdo;
+        return (new app_libs_DBConnection())->open_connect();
     }
 }
 
@@ -28,8 +16,40 @@ function hr_json($data, int $code = 200): void {
 
 function hr_require_employee(): array {
     if (session_status() === PHP_SESSION_NONE) session_start();
-    if (!isset($_SESSION['hr_employee'])) {
-        hr_json(['error' => 'Chưa đăng nhập'], 401);
+
+    // Already populated (HR portal session or prior admin call)
+    if (isset($_SESSION['hr_employee'])) {
+        return $_SESSION['hr_employee'];
     }
-    return $_SESSION['hr_employee'];
+
+    // Allow admin panel session with HR employee privileges (privilegeId 20/21/22)
+    if (!empty($_SESSION['role']['data'])) {
+        $hrPrivileges = [20, 21, 22];
+        $ids = array_column($_SESSION['role']['data'], 'privilegeId');
+        if (!empty(array_intersect($ids, $hrPrivileges))) {
+            $maNguoiDung = $_SESSION['user']['id'] ?? null;
+            if ($maNguoiDung) {
+                $db = HR_DB::get();
+                $stmt = $db->prepare(
+                    "SELECT nv.maNhanVien, nv.maNguoiDung, nv.chucVu, nd.hoVaTen
+                     FROM nhanVien nv
+                     JOIN nguoidung nd ON nv.maNguoiDung = nd.maNguoiDung
+                     WHERE nv.maNguoiDung = ? AND nv.trangThai = 'Dang lam' LIMIT 1"
+                );
+                $stmt->execute([$maNguoiDung]);
+                $nv = $stmt->fetch();
+                if ($nv) {
+                    $_SESSION['hr_employee'] = [
+                        'maNhanVien'  => $nv['maNhanVien'],
+                        'maNguoiDung' => $maNguoiDung,
+                        'hoVaTen'     => $nv['hoVaTen'],
+                        'chucVu'      => $nv['chucVu'],
+                    ];
+                    return $_SESSION['hr_employee'];
+                }
+            }
+        }
+    }
+
+    hr_json(['error' => 'Chưa đăng nhập'], 401);
 }
