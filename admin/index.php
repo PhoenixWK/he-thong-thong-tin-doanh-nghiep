@@ -149,7 +149,7 @@ if (count($role) <= 0) {
     <!-- Sidebar -->
     <sidebar class="sidebar">
         <!-- Brand -->
-        <a href="#" class="sidebar__brand">
+        <a href="/" class="sidebar__brand">
             <i class="icon fa-solid fa-shop"></i>
             <span class="name-brand">SPOCE STORE</span>
         </a>
